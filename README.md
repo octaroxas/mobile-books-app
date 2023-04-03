@@ -1,1 +1,1 @@
-# mobile-books-app
+# mobile-books-app (frontend)
