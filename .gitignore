@@ -1,0 +1,9 @@
+#Expo
+.expo
+node_modules
+.vscode
+.DS_Store
+packager-info.json
+
+#Xcode
+build/
