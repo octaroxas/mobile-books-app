@@ -23,7 +23,9 @@ import Feather from '@expo/vector-icons/Feather';
 import * as yup from 'yup'
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../contexts/AuthContext';
+import styles from './styles/styles';
 // import { Loading } from '../../contexts/AuthContext';
+import GirlImage from '../../../assets/images/girl.png';
 
 
 
@@ -58,16 +60,27 @@ const Login = () => {
   }
 
   return (
-    <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
-        <Text>Formulario de Login</Text>
+    <View style={styles.container}>
 
-        <TouchableOpacity style={{padding:20}} onPress={handleLogin}>
-          <Text>LOgar</Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity onPress={toSignUp}>
-          <Text>Cadastre-se</Text>
-        </TouchableOpacity>
+      <Image
+        style={styles.image}
+        source={require('../../../assets/images/girl.png')}
+      />
+
+      <Text>Formulario de Login</Text>
+
+      <View style={styles.formContainer}>
+        <TextInput placeholder='Email' style={styles.input} />
+        <TextInput placeholder='Senha' />
+      </View>
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <Text>Logar</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={toSignUp}>
+        <Text>Cadastre-se</Text>
+      </TouchableOpacity>
     </View>
   )
 

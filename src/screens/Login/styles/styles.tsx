@@ -2,6 +2,23 @@ import { useFonts, Nunito_400Regular, Nunito_700Bold } from '@expo-google-fonts/
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'white',
+        padding: 10,
+        // alignItems: 'center'
+    },
+    image: {
+        marginVertical: 50,
+        width: 400,
+        height: 400
+    },
+
+    formContainer: {
+        // display: 'flex',
+        // justifyContent: 'center',
+        // alignItems: 'center'
+    },
     login: {
         flex: 1,
         flexDirection: 'column',
