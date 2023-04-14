@@ -4,20 +4,19 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'column',
         backgroundColor: 'white',
         padding: 10,
-        // alignItems: 'center'
     },
     image: {
-        marginVertical: 50,
+        alignSelf: 'center',
+        marginTop: 50,
         width: 400,
         height: 400
     },
 
     formContainer: {
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center'
+        gap: 10,
     },
     login: {
         flex: 1,

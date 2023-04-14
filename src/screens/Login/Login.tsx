@@ -16,6 +16,8 @@ import {
   Nunito_700Bold
 } from '@expo-google-fonts/nunito';
 
+import LottieView from 'lottie-react-native';
+
 import { useForm, Controller, FieldValues } from 'react-hook-form';
 import { LinearGradient } from 'expo-linear-gradient';
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -24,11 +26,10 @@ import * as yup from 'yup'
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../contexts/AuthContext';
 import styles from './styles/styles';
-// import { Loading } from '../../contexts/AuthContext';
-import GirlImage from '../../../assets/images/girl.png';
-
-
-
+import { globalStyles } from '../../global-styles';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
+import GirlBooks from '../../components/animation-components/GirlBooks';
 
 const schemaValidation = yup.object({
   email: yup.string().email('E-mail inválido!').required('Informe um endereço de e-mail!'),
@@ -44,11 +45,13 @@ const schemaValidation = yup.object({
 //   }
 // }
 
-
 const Login = () => {
 
   const { handleLogin, setLoading } = useContext(AuthContext);
   const navigation = useNavigation();
+
+  const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
 
   useEffect(() => {
     console.log('login')
@@ -60,28 +63,47 @@ const Login = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
 
-
-      <Image
-        style={styles.image}
-        source={require('../../../assets/images/girl.png')}
-      />
-
-      <Text>Formulario de Login</Text>
-
-      <View style={styles.formContainer}>
-        <TextInput placeholder='Email' style={styles.input} />
-        <TextInput placeholder='Senha' />
+      <View style={{ height: '50%' }}>
+        <GirlBooks />
       </View>
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text>Logar</Text>
-      </TouchableOpacity>
 
-      <TouchableOpacity onPress={toSignUp}>
-        <Text>Cadastre-se</Text>
-      </TouchableOpacity>
-    </View>
+      <View style={globalStyles.headerFormContainer}>
+        <Text style={globalStyles.headerForm}>Bem vindo</Text>
+        <Text style={globalStyles.headerForm}>novamente, Leitor!</Text>
+      </View>
+
+      <View style={globalStyles.formContainer}>
+        <Input
+          label="Senha"
+          value={password}
+          onChange={() => { }}
+          placeholder='Senha'
+        />
+
+        <Input
+          label="E-mail"
+          value={email}
+          onChange={() => { }}
+          placeholder='E-mail'
+        />
+        <View style={{ display: 'flex', flexDirection: 'row', marginVertical: 10, justifyContent: 'space-between' }}>
+          <TouchableOpacity onPress={toSignUp}>
+            <Text>Esqueci a senha?</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={toSignUp}>
+            <Text>Não tenho cadastro?</Text>
+          </TouchableOpacity>
+        </View>
+        <Button
+          title="Entrar"
+          onPress={handleLogin}
+        />
+      </View>
+
+    </SafeAreaView>
   )
 
 }

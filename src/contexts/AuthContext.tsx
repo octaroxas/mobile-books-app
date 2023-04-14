@@ -4,6 +4,9 @@ import React, {
     useState
 } from "react";
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
+
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -35,9 +38,6 @@ interface IAuthContext {
     setAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-
-
-
 export const AuthContext = createContext({} as IAuthContext)
 
 function AuthProvider({ children }: any) {
@@ -55,13 +55,13 @@ function AuthProvider({ children }: any) {
     }
 
     const handleLogout = async () => {
-       
+
         AsyncStorage.clear()
         setAuthenticated(false)
     }
 
     useEffect(() => {
-       
+
 
     }, [])
 
