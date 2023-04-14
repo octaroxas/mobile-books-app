@@ -75,12 +75,6 @@ const Login = () => {
       </View>
 
       <View style={globalStyles.formContainer}>
-        <Input
-          label="Senha"
-          value={password}
-          onChange={() => { }}
-          placeholder='Senha'
-        />
 
         <Input
           label="E-mail"
@@ -88,6 +82,14 @@ const Login = () => {
           onChange={() => { }}
           placeholder='E-mail'
         />
+
+        <Input
+          label="Senha"
+          value={password}
+          onChange={() => { }}
+          placeholder='Senha'
+        />
+
         <View style={{ display: 'flex', flexDirection: 'row', marginVertical: 10, justifyContent: 'space-between' }}>
           <TouchableOpacity onPress={toSignUp}>
             <Text>Esqueci a senha?</Text>
