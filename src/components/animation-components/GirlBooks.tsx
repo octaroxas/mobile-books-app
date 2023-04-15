@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 // import LottieView from 'lottie-react-native';
 // const LottieView = require("lottie-react-native");
 import Lottie from 'lottie-react-native';
+import { Dimensions } from 'react-native';
 
 export default function GirlBooks({ ...rest }) {
 
@@ -16,6 +17,10 @@ export default function GirlBooks({ ...rest }) {
     return (
 
         <Lottie
+            style={{
+                height: Dimensions.get('screen').width,
+                width: Dimensions.get('screen').width,
+            }}
             source={require('../../animations/girl-books/data.json')}
             autoPlay
             loop

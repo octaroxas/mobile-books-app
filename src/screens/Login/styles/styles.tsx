@@ -1,5 +1,6 @@
-import { useFonts, Nunito_400Regular, Nunito_700Bold } from '@expo-google-fonts/nunito';
+import { useFonts } from '@expo-google-fonts/lobster';
 import { StyleSheet } from 'react-native';
+
 
 const styles = StyleSheet.create({
     container: {

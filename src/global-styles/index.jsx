@@ -1,13 +1,14 @@
 import { Dimensions, StyleSheet, useWindowDimensions } from "react-native"
-import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster';
 
 
 export const globalStyles = StyleSheet.create({
     headerFormContainer: {
+        // backgroundColor: 'red',
         display: "flex",
         justifyContent: "center",
         textAlign: "center",
         alignItems: "center",
+        marginTop: 50
     },
     formContainer: {
         marginHorizontal: 20,
