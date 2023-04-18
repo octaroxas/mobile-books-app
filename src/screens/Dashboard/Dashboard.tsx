@@ -1,55 +1,196 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/native'
 import React, { useContext, useEffect, useState } from 'react'
-import { Text, TouchableOpacity, View, ScrollView, StyleSheet, FlatList } from 'react-native'
+import { Text, TouchableOpacity, View, ScrollView, StyleSheet, FlatList, Dimensions } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import api from '../../api/api'
+import { Feather, Ionicons } from '@expo/vector-icons'
+
 
 import { AuthContext } from '../../contexts/AuthContext'
-import styles from './styles/styles'
-
-const notwaletsstyle = StyleSheet.create({
-    cardWarning: {
-        backgroundColor: '#393E56',
-        height: 100,
-        width: 200,
-        borderRadius: 20,
-        padding: 20,
-        borderColor: '#FF7A7A',
-        borderWidth: 1
-    },
-    textCard: {
-        color: '#fff',
-        fontWeight: 'bold'
-    },
-})
-
-
-
+import { TextInput } from 'react-native'
+import CollectionList from '../../components/CollectionList/CollectionList'
+import BookList from '../../components/BookList/BookList'
 
 export default function Dashboard() {
+    type collectionItem = {
+        title: string,
+        numberOfBooks: number,
+        urlCover: string
+    }
+    const listollections: Array<collectionItem> = [
+        {
+            title: 'Algusto Cury',
+            numberOfBooks: 6,
+            urlCover: 'https://m.media-amazon.com/images/I/51BMP3BV-4L._SY344_BO1,204,203,200_QL70_ML2_.jpg'
+        },
+        {
+            title: 'Harry Potter',
+            numberOfBooks: 2,
+            urlCover: 'https://m.media-amazon.com/images/I/41897yAI4LL._SY344_BO1,204,203,200_QL70_ML2_.jpg'
+        },
+        {
+            title: 'The Witcher',
+            numberOfBooks: 2,
+            urlCover: 'https://m.media-amazon.com/images/I/51vwNzvYc+L._SY344_BO1,204,203,200_.jpg'
+        },
+        {
+            title: 'Lovecraft',
+            numberOfBooks: 2,
+            urlCover: 'https://m.media-amazon.com/images/I/51Sim4WoXmL._SY344_BO1,204,203,200_QL70_ML2_.jpg'
+        },
+        {
+            title: 'Dark Souls',
+            numberOfBooks: 2,
+            urlCover: 'https://m.media-amazon.com/images/I/41Lxb5fDCuL._SY344_BO1,204,203,200_QL70_ML2_.jpg'
+        },
 
+    ]
 
+    type collectionBooks = {
+        title: string,
+        year: string,
+        urlCover: string
+    }
+
+    const listBooks: Array<collectionBooks> = [
+        {
+            title: 'De genio e louco, todo mundo tem um pouco',
+            year: '2009',
+            urlCover: 'https://m.media-amazon.com/images/I/51BMP3BV-4L._SY344_BO1,204,203,200_QL70_ML2_.jpg'
+        },
+        {
+            title: 'One Piece',
+            year: '1999',
+            urlCover: 'https://m.media-amazon.com/images/P/B07S1P3XDZ.01._SCLZZZZZZZ_SX500_.jpg'
+        },
+        {
+            title: 'Sussurros na escuridão',
+            year: '200x',
+            urlCover: 'https://m.media-amazon.com/images/I/81IJfIPsZzL._AC_UL400_.jpg'
+        },
+        {
+            title: 'Estudo em vermelho',
+            year: '200x',
+            urlCover: 'https://m.media-amazon.com/images/I/61GFsO7j0ZL._AC_UL400_.jpg'
+        },
+        {
+            title: 'O vendedor de sonhos',
+            year: '2009',
+            urlCover: 'https://m.media-amazon.com/images/I/61AsD5IgZnL._AC_UL400_.jpg'
+        },
+
+    ]
     const { handleLogout, setAuthenticated, setLoading } = useContext(AuthContext)
 
     const { navigate } = useNavigation()
 
     const toSignUp = () => {
         navigate('signup');
-      }
+    }
     useEffect(() => {
-       
+
     }, [])
 
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <SafeAreaView style={styles.container}>
-                <Text>Dashboard</Text>
+                <View style={styles.headerContainer}>
+                    <Text style={{ color: '#ABABAB' }}>Olá!Fulano</Text>
+                    <Text style={styles.header}>Dashboard</Text>
+                </View>
 
-                <TouchableOpacity onPress={handleLogout}>
-          <Text>Sair dessa merda</Text>
-        </TouchableOpacity>
+                <View style={styles.inputSearchContainer}>
+                    <TextInput placeholder='Livros, coleções...' style={styles.inputSearch} />
+                    <TouchableOpacity style={styles.searchButton}>
+                        <Ionicons name="search" size={20} color="white" />
+                    </TouchableOpacity>
+                </View>
+
+                <CollectionList list={listollections} />
+
+                <BookList list={listBooks} />
+
+
+
+                <View style={{ marginHorizontal: 20, marginVertical: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row' }}>
+                    <Text style={{ color: '#375A64', fontSize: 20 }}>Estatísticas</Text>
+                </View>
+                <ScrollView style={styles.colectionsContainer} showsHorizontalScrollIndicator={false} horizontal={true}>
+
+                    <View style={styles.statisticsItem}></View>
+                    <View style={styles.statisticsItem}></View>
+                    <View style={styles.statisticsItem}></View>
+                    <View style={styles.statisticsItem}></View>
+                    <View style={styles.statisticsItem}></View>
+                    <View style={styles.statisticsItem}></View>
+                    <View style={styles.statisticsItem}></View>
+
+                </ScrollView>
             </SafeAreaView>
         </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: 'white',
+        flex: 1,
+        // display: "flex",
+    },
+    headerContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        padding: 20,
+    },
+    header: {
+        fontSize: 35,
+        color: '#375A64',
+        fontFamily: 'Lobster_400Regular',
+    },
+    inputSearchContainer: {
+        backgroundColor: '#F9F9F9',
+        display: 'flex',
+        flexDirection: 'row',
+        marginHorizontal: 20,
+        borderRadius: 10,
+        justifyContent: 'space-between'
+    },
+    inputSearch: {
+        color: '#ABABAB',
+        height: 50,
+        padding: 10,
+    },
+    searchButton: {
+        backgroundColor: '#375A64',
+        height: 50,
+        width: 50,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+    },
+    colectionsContainer: {
+        display: 'flex',
+        marginVertical: 10,
+        marginLeft: 20
+    },
+    colectionItem: {
+        height: 200,
+        width: 150,
+        marginHorizontal: 5,
+        borderRadius: 15,
+        backgroundColor: '#F6F6F6'
+    },
+    statisticsContainer: {
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    statisticsItem: {
+        height: 100,
+        width: 100,
+        borderRadius: 10,
+        backgroundColor: '#F6F6F6',
+        marginHorizontal: 5
+    }
+})

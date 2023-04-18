@@ -6,13 +6,11 @@ import { AuthContext } from "../contexts/AuthContext";
 export default function ApplicationRoutes() {
 
 
-    useEffect(()=>{
-    console.log('aaplicationrules')
+    useEffect(() => {
 
-    },[])
+    }, [])
     const { authenticated } = useContext(AuthContext)
 
     return authenticated ? <AppStack /> : <AuthStack />
-    // return <Loading />
 
 }

@@ -3,20 +3,21 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'rea
 import { Feather, Ionicons } from '@expo/vector-icons'
 
 
-type collectionBooks = {
+type collectionItem = {
     title: string,
-    year: string,
+    numberOfBooks: number,
     urlCover: string
 }
 
-interface BooksItemProps {
-    list: Array<collectionBooks>
+interface ColectionItemProps {
+    list: Array<collectionItem>
 }
-export default function BookList({ list }: BooksItemProps) {
+
+export default function CollectionList({ list }: ColectionItemProps) {
     return (
         <View>
             <View style={{ marginHorizontal: 20, marginVertical: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row' }}>
-                <Text style={{ color: '#375A64', fontSize: 20 }}>Meus Livros</Text>
+                <Text style={{ color: '#375A64', fontSize: 20 }}>Coleções</Text>
             </View>
             <ScrollView style={styles.colectionsContainer} showsHorizontalScrollIndicator={false} horizontal={true}>
                 {list.map((item, index) => (
@@ -24,11 +25,10 @@ export default function BookList({ list }: BooksItemProps) {
                         <View key={index} style={styles.colectionItem}>
                             <Image style={{ borderRadius: 10, height: '100%', width: '100%' }} source={{ uri: item.urlCover }} />
                         </View>
-                        <Text numberOfLines={1} style={{ flex: 1, width: 150, fontWeight: 600, color: '#375A64' }}>{item.title}</Text>
-                        <Text style={{ color: '#91B8C3', flexWrap: 'nowrap', }} >{item.year} </Text>
+                        <Text numberOfLines={1} style={{ flex: 1, fontWeight: 600, color: '#375A64' }}>{item.title}</Text>
+                        <Text style={{ color: '#91B8C3' }} >{item.numberOfBooks} livros</Text>
                     </TouchableOpacity>
-                ))
-                }
+                ))}
 
                 <View style={{ marginRight: 20 }}>
                     <TouchableOpacity style={{
@@ -46,7 +46,7 @@ export default function BookList({ list }: BooksItemProps) {
                     >
                         <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <Ionicons name="arrow-forward-outline" color='gray' size={30} />
-                            <Text>Ver Todos</Text>
+                            <Text> Ver Todas</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -117,4 +117,3 @@ const styles = StyleSheet.create({
         marginHorizontal: 5
     }
 })
-

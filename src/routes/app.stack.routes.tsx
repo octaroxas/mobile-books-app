@@ -12,7 +12,7 @@ export default function AppStack() {
             initialRouteName="main"
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: '#5971FF',
+                    // backgroundColor: '#5971FF',
                 },
                 headerTitleAlign: 'center',
                 headerTitleStyle: {
