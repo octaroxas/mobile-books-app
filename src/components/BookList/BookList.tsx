@@ -1,17 +1,9 @@
 import React from 'react'
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { Feather, Ionicons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'
 
+import { BooksItemProps } from '../../@tipagens/interfaces'
 
-type collectionBooks = {
-    title: string,
-    year: string,
-    urlCover: string
-}
-
-interface BooksItemProps {
-    list: Array<collectionBooks>
-}
 export default function BookList({ list }: BooksItemProps) {
     return (
         <View>

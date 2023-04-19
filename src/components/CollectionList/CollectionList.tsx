@@ -2,16 +2,9 @@ import React from 'react'
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Feather, Ionicons } from '@expo/vector-icons'
 
+import { collectionList } from '../../@tipagens/types'
+import { ColectionItemProps } from '../../@tipagens/interfaces'
 
-type collectionItem = {
-    title: string,
-    numberOfBooks: number,
-    urlCover: string
-}
-
-interface ColectionItemProps {
-    list: Array<collectionItem>
-}
 
 export default function CollectionList({ list }: ColectionItemProps) {
     return (

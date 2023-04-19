@@ -11,35 +11,37 @@ import { AuthContext } from '../../contexts/AuthContext'
 import { TextInput } from 'react-native'
 import CollectionList from '../../components/CollectionList/CollectionList'
 import BookList from '../../components/BookList/BookList'
+import { collectionList, collectionBooks } from '../../@tipagens/types'
 
 export default function Dashboard() {
-    type collectionItem = {
-        title: string,
-        numberOfBooks: number,
-        urlCover: string
-    }
-    const listollections: Array<collectionItem> = [
+
+    const listollections: Array<collectionList> = [
         {
+            id: 1,
             title: 'Algusto Cury',
             numberOfBooks: 6,
             urlCover: 'https://m.media-amazon.com/images/I/51BMP3BV-4L._SY344_BO1,204,203,200_QL70_ML2_.jpg'
         },
         {
+            id: 2,
             title: 'Harry Potter',
             numberOfBooks: 2,
             urlCover: 'https://m.media-amazon.com/images/I/41897yAI4LL._SY344_BO1,204,203,200_QL70_ML2_.jpg'
         },
         {
+            id: 3,
             title: 'The Witcher',
             numberOfBooks: 2,
             urlCover: 'https://m.media-amazon.com/images/I/51vwNzvYc+L._SY344_BO1,204,203,200_.jpg'
         },
         {
+            id: 4,
             title: 'Lovecraft',
             numberOfBooks: 2,
             urlCover: 'https://m.media-amazon.com/images/I/51Sim4WoXmL._SY344_BO1,204,203,200_QL70_ML2_.jpg'
         },
         {
+            id: 5,
             title: 'Dark Souls',
             numberOfBooks: 2,
             urlCover: 'https://m.media-amazon.com/images/I/41Lxb5fDCuL._SY344_BO1,204,203,200_QL70_ML2_.jpg'
@@ -47,34 +49,33 @@ export default function Dashboard() {
 
     ]
 
-    type collectionBooks = {
-        title: string,
-        year: string,
-        urlCover: string
-    }
-
     const listBooks: Array<collectionBooks> = [
         {
+            id: 1,
             title: 'De genio e louco, todo mundo tem um pouco',
             year: '2009',
             urlCover: 'https://m.media-amazon.com/images/I/51BMP3BV-4L._SY344_BO1,204,203,200_QL70_ML2_.jpg'
         },
         {
+            id: 2,
             title: 'One Piece',
             year: '1999',
             urlCover: 'https://m.media-amazon.com/images/P/B07S1P3XDZ.01._SCLZZZZZZZ_SX500_.jpg'
         },
         {
+            id: 3,
             title: 'Sussurros na escuridão',
             year: '200x',
             urlCover: 'https://m.media-amazon.com/images/I/81IJfIPsZzL._AC_UL400_.jpg'
         },
         {
+            id: 4,
             title: 'Estudo em vermelho',
             year: '200x',
             urlCover: 'https://m.media-amazon.com/images/I/61GFsO7j0ZL._AC_UL400_.jpg'
         },
         {
+            id: 5,
             title: 'O vendedor de sonhos',
             year: '2009',
             urlCover: 'https://m.media-amazon.com/images/I/61AsD5IgZnL._AC_UL400_.jpg'
@@ -88,6 +89,23 @@ export default function Dashboard() {
     const toSignUp = () => {
         navigate('signup');
     }
+
+    // const showBook = (id) => {
+    //     navigate('show-book', { id: id });
+    // }
+
+    // const showCollection = (id) => {
+    //     navigate('show-collection', { id: id });
+    // }
+
+    // const allCollections = (id) => {
+    //     navigate('all-collections', { id: id });
+    // }
+
+    // const allBooks = (id) => {
+    //     navigate('all-books', { id: id });
+    // }
+
     useEffect(() => {
 
     }, [])
