@@ -11,7 +11,8 @@ import { AuthContext } from '../../contexts/AuthContext'
 import { TextInput } from 'react-native'
 import CollectionList from '../../components/CollectionList/CollectionList'
 import BookList from '../../components/BookList/BookList'
-import { collectionList, collectionBooks } from '../../@tipagens/types'
+import { collectionList, collectionBooks, statisticsList } from '../../@tipagens/types'
+import StatisticsItems from '../../components/StatisticsItems/StatisticsItems'
 
 export default function Dashboard() {
 
@@ -82,13 +83,30 @@ export default function Dashboard() {
         },
 
     ]
+    const listStatistics: Array<statisticsList> = [
+        {
+            label: 'Páginas Lidas',
+            value: '100'
+        },
+
+        {
+            label: 'Livros finalizados',
+            value: '100'
+        },
+
+        {
+            label: 'Coleções criadas',
+            value: '100'
+        },
+
+        {
+            label: 'Total de registros',
+            value: '100'
+        },
+    ]
     const { handleLogout, setAuthenticated, setLoading } = useContext(AuthContext)
 
     const { navigate } = useNavigation()
-
-    const toSignUp = () => {
-        navigate('signup');
-    }
 
     // const showBook = (id) => {
     //     navigate('show-book', { id: id });
@@ -134,7 +152,9 @@ export default function Dashboard() {
                 <View style={{ marginHorizontal: 20, marginVertical: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row' }}>
                     <Text style={{ color: '#375A64', fontSize: 20 }}>Estatísticas</Text>
                 </View>
-                <ScrollView style={styles.colectionsContainer} showsHorizontalScrollIndicator={false} horizontal={true}>
+
+                <StatisticsItems list={listStatistics} />
+                {/* <ScrollView style={styles.colectionsContainer} showsHorizontalScrollIndicator={false} horizontal={true}>
 
                     <View style={styles.statisticsItem}></View>
                     <View style={styles.statisticsItem}></View>
@@ -144,7 +164,7 @@ export default function Dashboard() {
                     <View style={styles.statisticsItem}></View>
                     <View style={styles.statisticsItem}></View>
 
-                </ScrollView>
+                </ScrollView> */}
             </SafeAreaView>
         </ScrollView>
     )

@@ -13,3 +13,8 @@ export type collectionBooks = {
     year: string,
     urlCover: string
 }
+
+export type statisticsList = {
+    label: string,
+    value: string
+}
