@@ -1,11 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/native'
 import React, { useContext, useEffect, useState } from 'react'
-import { Text, TouchableOpacity, View, ScrollView, StyleSheet, FlatList, Dimensions } from 'react-native'
+import { Text, TouchableOpacity, View, ScrollView, StyleSheet, RefreshControl } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import api from '../../api/api'
-import { Feather, Ionicons } from '@expo/vector-icons'
-
+import { Ionicons } from '@expo/vector-icons'
 
 import { AuthContext } from '../../contexts/AuthContext'
 import { TextInput } from 'react-native'
@@ -108,6 +107,15 @@ export default function Dashboard() {
 
     const { navigate } = useNavigation()
 
+    const [refreshing, setRefreshing] = useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        setTimeout(() => {
+            setRefreshing(false);
+        }, 1000);
+    }, []);
+
     // const showBook = (id) => {
     //     navigate('show-book', { id: id });
     // }
@@ -129,7 +137,7 @@ export default function Dashboard() {
     }, [])
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
             <SafeAreaView style={styles.container}>
                 <View style={styles.headerContainer}>
                     <Text style={{ color: '#ABABAB' }}>Olá!Fulano</Text>
