@@ -1,8 +1,7 @@
 import React from 'react'
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { Feather, Ionicons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'
 
-import { collectionList } from '../../@tipagens/types'
 import { ColectionItemProps } from '../../@tipagens/interfaces'
 
 
@@ -18,7 +17,7 @@ export default function CollectionList({ list }: ColectionItemProps) {
                         <View key={index} style={styles.colectionItem}>
                             <Image style={{ borderRadius: 10, height: '100%', width: '100%' }} source={{ uri: item.urlCover }} />
                         </View>
-                        <Text numberOfLines={1} style={{ flex: 1, fontWeight: 600, color: '#375A64' }}>{item.title}</Text>
+                        <Text numberOfLines={1} style={{ flex: 1, fontWeight: '600', color: '#375A64' }}>{item.title}</Text>
                         <Text style={{ color: '#91B8C3' }} >{item.numberOfBooks} livros</Text>
                     </TouchableOpacity>
                 ))}
@@ -52,7 +51,6 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         flex: 1,
-        // display: "flex",
     },
     headerContainer: {
         display: 'flex',
