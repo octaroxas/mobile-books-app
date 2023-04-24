@@ -1,5 +1,10 @@
 import { Dimensions, StyleSheet, useWindowDimensions } from "react-native"
 
+export const theme = {
+    colors: {
+        primary: '#375A64',
+    }
+}
 
 export const globalStyles = StyleSheet.create({
     headerFormContainer: {

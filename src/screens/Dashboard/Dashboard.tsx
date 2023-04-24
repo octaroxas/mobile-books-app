@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/native'
 import React, { useContext, useEffect, useState } from 'react'
-import { Text, TouchableOpacity, View, ScrollView, StyleSheet, RefreshControl } from 'react-native'
+import { Text, TouchableOpacity, View, ScrollView, StyleSheet, RefreshControl, Modal, Alert, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import api from '../../api/api'
 import { Ionicons } from '@expo/vector-icons'
@@ -106,6 +106,7 @@ export default function Dashboard() {
     const { handleLogout, setAuthenticated, setLoading } = useContext(AuthContext)
 
     const { navigate } = useNavigation()
+    const [modalVisible, setModalVisible] = useState(false);
 
     const [refreshing, setRefreshing] = useState(false);
 
@@ -138,6 +139,7 @@ export default function Dashboard() {
 
     return (
         <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+
             <SafeAreaView style={styles.container}>
                 <View style={styles.headerContainer}>
                     <Text style={{ color: '#ABABAB' }}>Olá!Fulano</Text>
@@ -155,24 +157,12 @@ export default function Dashboard() {
 
                 <BookList list={listBooks} />
 
-
-
                 <View style={{ marginHorizontal: 20, marginVertical: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row' }}>
                     <Text style={{ color: '#375A64', fontSize: 20 }}>Estatísticas</Text>
                 </View>
 
                 <StatisticsItems list={listStatistics} />
-                {/* <ScrollView style={styles.colectionsContainer} showsHorizontalScrollIndicator={false} horizontal={true}>
 
-                    <View style={styles.statisticsItem}></View>
-                    <View style={styles.statisticsItem}></View>
-                    <View style={styles.statisticsItem}></View>
-                    <View style={styles.statisticsItem}></View>
-                    <View style={styles.statisticsItem}></View>
-                    <View style={styles.statisticsItem}></View>
-                    <View style={styles.statisticsItem}></View>
-
-                </ScrollView> */}
             </SafeAreaView>
         </ScrollView>
     )
@@ -238,5 +228,48 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: '#F6F6F6',
         marginHorizontal: 5
-    }
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 22,
+    },
+    modalView: {
+        // margin: 20,
+        width: '90%',
+        height: '50%',
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 35,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+    },
+    buttonOpen: {
+        backgroundColor: '#F194FF',
+    },
+    buttonClose: {
+        backgroundColor: '#2196F3',
+    },
+    textStyle: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: 'center',
+    },
 })
