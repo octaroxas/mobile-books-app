@@ -3,8 +3,18 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'rea
 import { Ionicons } from '@expo/vector-icons'
 
 import { BooksItemProps } from '../../@tipagens/interfaces'
+import { useNavigation } from '@react-navigation/native'
+// show_book
+
 
 export default function BookList({ list }: BooksItemProps) {
+
+    const { navigate } = useNavigation();
+
+    const showBook = () => {
+        navigate('show-book');
+    }
+
     return (
         <View>
             <View style={{ marginHorizontal: 20, marginVertical: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row' }}>
@@ -12,11 +22,11 @@ export default function BookList({ list }: BooksItemProps) {
             </View>
             <ScrollView style={styles.colectionsContainer} showsHorizontalScrollIndicator={false} horizontal={true}>
                 {list.map((item, index) => (
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={showBook}>
                         <View key={index} style={styles.colectionItem}>
                             <Image style={{ borderRadius: 10, height: '100%', width: '100%' }} source={{ uri: item.urlCover }} />
                         </View>
-                        <Text numberOfLines={1} style={{ flex: 1, width: 150, fontWeight: 600, color: '#375A64' }}>{item.title}</Text>
+                        <Text numberOfLines={1} style={{ flex: 1, width: 150, fontWeight: '600', color: '#375A64' }}>{item.title}</Text>
                         <Text style={{ color: '#91B8C3', flexWrap: 'nowrap', }} >{item.year} </Text>
                     </TouchableOpacity>
                 ))
