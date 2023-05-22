@@ -47,7 +47,7 @@ export default function Tabs() {
 
                 options={{
                     tabBarIcon: () => (<Ionicons name="home" size={20} />),
-                    headerShown: true
+                    headerShown: false
                 }}
                 name="Dashboard"
                 component={Dashboard}
@@ -92,7 +92,7 @@ export default function Tabs() {
             <Screen
                 options={{
                     tabBarIcon: () => (<Ionicons name="person" size={20} />),
-                    headerShown: false
+                    headerShown: true
                 }}
                 name="Perfil"
                 component={Profile}
