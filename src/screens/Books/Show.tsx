@@ -13,6 +13,8 @@ export default function Show() {
         author: string,
         synopsis: string
     }
+
+
     const [book, setBook] = useState({
         id: 1,
         author: 'Algusto Cury',
@@ -23,6 +25,11 @@ export default function Show() {
     } as book);
 
     const [tab, setTab] = useState('sinopse');
+    const [reads, setReads] = useState([
+        {
+
+        }
+    ]);
 
 
     // async function getBook() {
@@ -47,7 +54,9 @@ export default function Show() {
     function Reads() {
         return (
             <View>
-                <Text>Leituras</Text>
+                <Text>
+
+                </Text>
             </View>
         )
     }
@@ -74,8 +83,6 @@ export default function Show() {
 
     return (
         <ScrollView style={{ flex: 1 }}>
-
-
             <View
                 style={{
                     display: 'flex',
@@ -133,8 +140,6 @@ export default function Show() {
                     <TabSelectionContent />
                 </View>
             </View>
-
-
-        </ScrollView >
+        </ScrollView>
     )
 }
