@@ -14,6 +14,17 @@ export default function Show() {
         synopsis: string
     }
 
+    type read = {
+        pages: number,
+        comment: string,
+        book_id: number,
+        created_at: string
+    }
+
+    interface ListReads {
+        list: Array<read>
+    }
+
 
     const [book, setBook] = useState({
         id: 1,
@@ -25,20 +36,43 @@ export default function Show() {
     } as book);
 
     const [tab, setTab] = useState('sinopse');
-    const [reads, setReads] = useState([
-        {
-
-        }
-    ]);
-
-
-    // async function getBook() {
-    //     const response = await api.get('');
-    // }
+    const [reads, setReads] = useState<read[]>(
+        [
+            {
+                pages: 10,
+                comment: 'dn dj eudse cje os csjc js cis cjs cs cksrj csjr opnaenaoe oae xale',
+                book_id: 1,
+                created_at: '12/05/2023'
+            },
+            {
+                pages: 10,
+                comment: 'dn dj eudse cje os csjc js cis cjs cs cksrj csjr opnaenaoe oae xale',
+                book_id: 1,
+                created_at: '12/05/2023'
+            },
+            {
+                pages: 10,
+                comment: 'dn dj eudse cje os csjc js cis cjs cs cksrj csjr opnaenaoe oae xale',
+                book_id: 1,
+                created_at: '12/05/2023'
+            },
+            {
+                pages: 10,
+                comment: 'dn dj eudse cje os csjc js cis cjs cs cksrj csjr opnaenaoe oae xale',
+                book_id: 1,
+                created_at: '12/05/2023'
+            },
+            {
+                pages: 10,
+                comment: 'dn dj eudse cje os csjc js cis cjs cs cksrj csjr opnaenaoe oae xale',
+                book_id: 1,
+                created_at: '12/05/2023'
+            },
+        ]);
 
     function TabSelectionContent() {
         if (tab === 'sinopse') return <Sinopse />
-        if (tab === 'reads') return <Reads />
+        if (tab === 'reads') return <Reads list={reads} />
         if (tab === 'avaliations') return <Avaliations />
         if (tab === 'infos') return <Infos />
     }
@@ -51,12 +85,23 @@ export default function Show() {
         )
     }
 
-    function Reads() {
+    function Reads({ list }: ListReads) {
         return (
-            <View>
-                <Text>
-
-                </Text>
+            <View style={{ display: 'flex', gap: 5, paddingBottom: 10 }}>
+                {list.map((item, index) => (
+                    <View style={{
+                        borderColor: '#EDED',
+                        borderWidth: 1,
+                        borderTopEndRadius: 10,
+                        borderBottomEndRadius: 10,
+                        borderBottomLeftRadius: 10,
+                        padding: 10,
+                    }} key={`${index}-${item.created_at}`}>
+                        <Text>Número de páginas {item.pages}</Text>
+                        <Text>{item.created_at}</Text>
+                        <Text>{item.comment}</Text>
+                    </View>
+                ))}
             </View>
         )
     }
