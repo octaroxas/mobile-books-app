@@ -51,8 +51,8 @@ const schemaValidation = yup.object({
 
 const SignUp = ({ navigation }: any) => {
 
-  const { handleLogin, setLoading } = useContext(AuthContext);
-    
+    const { handleLogin, setLoading } = useContext(AuthContext);
+
 
     const { control, handleSubmit, getValues, formState: { errors } } = useForm({
         defaultValues: {
@@ -97,7 +97,7 @@ const SignUp = ({ navigation }: any) => {
     // }
 
     const signUp = async (userRegistrationData: any) => {
-       
+
     }
 
     const tologin = () => {
@@ -110,64 +110,57 @@ const SignUp = ({ navigation }: any) => {
 
 
     return (
-            
+
         <SafeAreaView style={styles.container}>
 
-        <View style={{ height: '40%', }}>
-          <GirlBooks />
-        </View>
-  
-        <View style={globalStyles.headerFormContainer}>
-          <Text style={{
-            fontSize: 40,
-            color: '#375A64',
-            fontFamily: 'Lobster_400Regular',
-          }}>Bem vindo</Text>
-          <Text style={{
-            fontSize: 40,
-            color: '#375A64',
-            fontFamily: 'Lobster_400Regular',
-          }}>novamente, Leitor!</Text>
-        </View>
-  
-        <View style={globalStyles.formContainer}>
-          <Input
-            label="Nome"
-            value={nome}
-            onChange={() => { }}
-            placeholder='Nome'
-          />
-          <Input
-            label="E-mail"
-            value={email}
-            onChange={() => { }}
-            placeholder='E-mail'
-          />
-  
-          <Input
-            label="Senha"
-            value={password}
-            onChange={() => { }}
-            placeholder='Senha'
-          />
-  
-          <View style={{ display: 'flex', flexDirection: 'row', marginVertical: 10, justifyContent: 'space-between' }}>
-            <TouchableOpacity onPress={signUp}>
-              <Text>Esqueci a senha?</Text>
-            </TouchableOpacity>
-  
-            <TouchableOpacity onPress={signUp}>
-              <Text>Não tenho cadastro?</Text>
-            </TouchableOpacity>
-          </View>
-          <Button
-            title="Entrar"
-            onPress={handleLogin}
-          />
-        </View>
-  
-      </SafeAreaView>
-        
+            <View style={{ height: '40%', }}>
+                <GirlBooks />
+            </View>
+
+            <View style={globalStyles.headerFormContainer}>
+                <Text style={{
+                    fontSize: 40,
+                    color: '#375A64',
+                    fontFamily: 'Lobster_400Regular',
+                }}>Cadastre-se!</Text>
+            </View>
+
+            <View style={globalStyles.formContainer}>
+           
+                <Input
+                    label="E-mail"
+                    value={email}
+                    onChange={() => { }}
+                    placeholder='E-mail'
+                />
+
+                <Input
+                    label="Senha"
+                    value={password}
+                    onChange={() => { }}
+                    placeholder='Senha'
+                />
+
+                <Input
+                    label="Confirmar Senha"
+                    value={password}
+                    onChange={() => { }}
+                    placeholder='Confirmar Senha'
+                />
+
+                <View style={{ display: 'flex', flexDirection: 'row', marginVertical: 10, justifyContent: 'space-between' }}>
+                    <TouchableOpacity onPress={tologin}>
+                        <Text>Já tenho cadastro?</Text>
+                    </TouchableOpacity>
+                </View>
+                <Button
+                    title="cadastra"
+                    onPress={handleSignUp}
+                />
+            </View>
+
+        </SafeAreaView>
+
     )
 }
 
