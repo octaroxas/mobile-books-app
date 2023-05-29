@@ -113,7 +113,7 @@ const SignUp = ({ navigation }: any) => {
 
         <SafeAreaView style={styles.container}>
 
-            <View style={{ height: '40%', }}>
+            <View style={{ height: '40%' }}>
                 <GirlBooks />
             </View>
 
@@ -126,7 +126,7 @@ const SignUp = ({ navigation }: any) => {
             </View>
 
             <View style={globalStyles.formContainer}>
-           
+
                 <Input
                     label="E-mail"
                     value={email}
