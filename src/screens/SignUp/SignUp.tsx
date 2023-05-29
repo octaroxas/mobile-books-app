@@ -16,6 +16,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../contexts/AuthContext'
+import Input from '../../components/Input';
+import GirlBooks from '../../components/animation-components/GirlBooks';
+import { globalStyles } from '../../global-styles';
+import Button from '../../components/Button';
 
 
 interface IFormSignUp {
@@ -61,6 +65,9 @@ const SignUp = ({ navigation }: any) => {
     })
     const [showPassword, setShowPassword] = useState(true)
     const [showPasswordRepeat, setShowPasswordRepeat] = useState(true)
+    const [nome, setNome] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
     const { handleSignUp } = useContext(AuthContext)
 
 
@@ -103,20 +110,63 @@ const SignUp = ({ navigation }: any) => {
 
 
     return (
-       
             
-            <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
-                <Text>Form de Cadastre-se</Text>
-        <TouchableOpacity style={{padding:20}} onPress={handleLogin}>
-          <Text>Cadastrar usuairo</Text>
-        </TouchableOpacity>
+        <SafeAreaView style={styles.container}>
 
-                <TouchableOpacity style={{padding:20}} onPress={handleLogin}>
-          <Text>voltar ao Login</Text>
-        </TouchableOpacity>
-
-
-    </View>
+        <View style={{ height: '40%', }}>
+          <GirlBooks />
+        </View>
+  
+        <View style={globalStyles.headerFormContainer}>
+          <Text style={{
+            fontSize: 40,
+            color: '#375A64',
+            fontFamily: 'Lobster_400Regular',
+          }}>Bem vindo</Text>
+          <Text style={{
+            fontSize: 40,
+            color: '#375A64',
+            fontFamily: 'Lobster_400Regular',
+          }}>novamente, Leitor!</Text>
+        </View>
+  
+        <View style={globalStyles.formContainer}>
+          <Input
+            label="Nome"
+            value={nome}
+            onChange={() => { }}
+            placeholder='Nome'
+          />
+          <Input
+            label="E-mail"
+            value={email}
+            onChange={() => { }}
+            placeholder='E-mail'
+          />
+  
+          <Input
+            label="Senha"
+            value={password}
+            onChange={() => { }}
+            placeholder='Senha'
+          />
+  
+          <View style={{ display: 'flex', flexDirection: 'row', marginVertical: 10, justifyContent: 'space-between' }}>
+            <TouchableOpacity onPress={signUp}>
+              <Text>Esqueci a senha?</Text>
+            </TouchableOpacity>
+  
+            <TouchableOpacity onPress={signUp}>
+              <Text>Não tenho cadastro?</Text>
+            </TouchableOpacity>
+          </View>
+          <Button
+            title="Entrar"
+            onPress={handleLogin}
+          />
+        </View>
+  
+      </SafeAreaView>
         
     )
 }
