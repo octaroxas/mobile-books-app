@@ -16,6 +16,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../contexts/AuthContext'
+import Input from '../../components/Input';
+import GirlBooks from '../../components/animation-components/GirlBooks';
+import { globalStyles } from '../../global-styles';
+import Button from '../../components/Button';
 
 
 interface IFormSignUp {
@@ -47,8 +51,8 @@ const schemaValidation = yup.object({
 
 const SignUp = ({ navigation }: any) => {
 
-  const { handleLogin, setLoading } = useContext(AuthContext);
-    
+    const { handleLogin, setLoading } = useContext(AuthContext);
+
 
     const { control, handleSubmit, getValues, formState: { errors } } = useForm({
         defaultValues: {
@@ -61,6 +65,9 @@ const SignUp = ({ navigation }: any) => {
     })
     const [showPassword, setShowPassword] = useState(true)
     const [showPasswordRepeat, setShowPasswordRepeat] = useState(true)
+    const [nome, setNome] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
     const { handleSignUp } = useContext(AuthContext)
 
 
@@ -90,7 +97,7 @@ const SignUp = ({ navigation }: any) => {
     // }
 
     const signUp = async (userRegistrationData: any) => {
-       
+
     }
 
     const tologin = () => {
@@ -103,21 +110,57 @@ const SignUp = ({ navigation }: any) => {
 
 
     return (
-       
-            
-            <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
-                <Text>Form de Cadastre-se</Text>
-        <TouchableOpacity style={{padding:20}} onPress={handleLogin}>
-          <Text>Cadastrar usuairo</Text>
-        </TouchableOpacity>
 
-                <TouchableOpacity style={{padding:20}} onPress={handleLogin}>
-          <Text>voltar ao Login</Text>
-        </TouchableOpacity>
+        <SafeAreaView style={styles.container}>
 
+            <View style={{ height: '40%' }}>
+                <GirlBooks />
+            </View>
 
-    </View>
-        
+            <View style={globalStyles.headerFormContainer}>
+                <Text style={{
+                    fontSize: 40,
+                    color: '#375A64',
+                    fontFamily: 'Lobster_400Regular',
+                }}>Cadastre-se!</Text>
+            </View>
+
+            <View style={globalStyles.formContainer}>
+
+                <Input
+                    label="E-mail"
+                    value={email}
+                    onChange={() => { }}
+                    placeholder='E-mail'
+                />
+
+                <Input
+                    label="Senha"
+                    value={password}
+                    onChange={() => { }}
+                    placeholder='Senha'
+                />
+
+                <Input
+                    label="Confirmar Senha"
+                    value={password}
+                    onChange={() => { }}
+                    placeholder='Confirmar Senha'
+                />
+
+                <View style={{ display: 'flex', flexDirection: 'row', marginVertical: 10, justifyContent: 'space-between' }}>
+                    <TouchableOpacity onPress={tologin}>
+                        <Text>Já tenho cadastro?</Text>
+                    </TouchableOpacity>
+                </View>
+                <Button
+                    title="cadastra"
+                    onPress={handleSignUp}
+                />
+            </View>
+
+        </SafeAreaView>
+
     )
 }
 

@@ -3,8 +3,9 @@ import { StyleSheet, Dimensions } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 40,
-        backgroundColor: '#32364D'
+        flexDirection: 'column',
+        backgroundColor: 'white',
+        padding: 10,
     },
     backButtonContainer: {
         backgroundColor: '#f1f1f1'
