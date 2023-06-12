@@ -7,6 +7,7 @@ import ShowBook from "../screens/Books/Show";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Index from "../screens/Books/Index";
+import Create from "../screens/Books/Create";
 
 
 const { Screen, Navigator } = createNativeStackNavigator()
@@ -58,6 +59,17 @@ export default function AppStack() {
                 }}
                 name="show-book"
                 component={ShowBook}
+            />
+
+            <Screen
+                options={{
+                    title: 'Criar Livro',
+                    headerTitleStyle: {
+                        fontWeight: 'normal',
+                    },
+                }}
+                name="create-book"
+                component={Create}
             />
         </Navigator>
     )

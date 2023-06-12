@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList, Text, TextInput, TouchableOpacity, View, Image, TouchableHighlight, ScrollView } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
@@ -6,6 +6,14 @@ import { collectionBooks } from '../../@tipagens/types';
 
 
 export default function Index() {
+    const [refreshing, setRefreshing] = useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        setTimeout(() => {
+            setRefreshing(false);
+        }, 1000);
+    }, []);
 
     const { navigate } = useNavigation();
     const [books, setBooks] = useState([])
@@ -13,6 +21,10 @@ export default function Index() {
 
     const showBook = () => {
         navigate('show-book');
+    }
+
+    const createBook = () => {
+        navigate('create-book');
     }
 
     function getBooks() {
@@ -40,39 +52,39 @@ export default function Index() {
         getBooks()
     }, [])
 
-    const listBooks: Array<collectionBooks> = [
-        {
-            id: 1,
-            title: 'De genio e louco, todo mundo tem um pouco',
-            year: '2009',
-            urlCover: 'https://m.media-amazon.com/images/I/51BMP3BV-4L._SY344_BO1,204,203,200_QL70_ML2_.jpg'
-        },
-        {
-            id: 2,
-            title: 'One Piece',
-            year: '1999',
-            urlCover: 'https://m.media-amazon.com/images/P/B07S1P3XDZ.01._SCLZZZZZZZ_SX500_.jpg'
-        },
-        {
-            id: 3,
-            title: 'Sussurros na escuridão',
-            year: '200x',
-            urlCover: 'https://m.media-amazon.com/images/I/81IJfIPsZzL._AC_UL400_.jpg'
-        },
-        {
-            id: 4,
-            title: 'Estudo em vermelho',
-            year: '200x',
-            urlCover: 'https://m.media-amazon.com/images/I/61GFsO7j0ZL._AC_UL400_.jpg'
-        },
-        {
-            id: 5,
-            title: 'O vendedor de sonhos',
-            year: '2009',
-            urlCover: 'https://m.media-amazon.com/images/I/61AsD5IgZnL._AC_UL400_.jpg'
-        }
+    // const listBooks: Array<collectionBooks> = [
+    //     {
+    //         id: 1,
+    //         title: 'De genio e louco, todo mundo tem um pouco',
+    //         year: '2009',
+    //         urlCover: 'https://m.media-amazon.com/images/I/51BMP3BV-4L._SY344_BO1,204,203,200_QL70_ML2_.jpg'
+    //     },
+    //     {
+    //         id: 2,
+    //         title: 'One Piece',
+    //         year: '1999',
+    //         urlCover: 'https://m.media-amazon.com/images/P/B07S1P3XDZ.01._SCLZZZZZZZ_SX500_.jpg'
+    //     },
+    //     {
+    //         id: 3,
+    //         title: 'Sussurros na escuridão',
+    //         year: '200x',
+    //         urlCover: 'https://m.media-amazon.com/images/I/81IJfIPsZzL._AC_UL400_.jpg'
+    //     },
+    //     {
+    //         id: 4,
+    //         title: 'Estudo em vermelho',
+    //         year: '200x',
+    //         urlCover: 'https://m.media-amazon.com/images/I/61GFsO7j0ZL._AC_UL400_.jpg'
+    //     },
+    //     {
+    //         id: 5,
+    //         title: 'O vendedor de sonhos',
+    //         year: '2009',
+    //         urlCover: 'https://m.media-amazon.com/images/I/61AsD5IgZnL._AC_UL400_.jpg'
+    //     }
 
-    ]
+    // ]
 
     const Book = ({ urlCover, year, title }: Book) => {
         const styles = StyleSheet.create({
@@ -118,7 +130,7 @@ export default function Index() {
             </View>
 
             <View style={styles.addBookButtomContainer}>
-                <TouchableOpacity style={styles.addBookButtom}>
+                <TouchableOpacity onPress={createBook} style={styles.addBookButtom}>
                     <Text>
                         Adicionar Livro +
                     </Text>
@@ -126,6 +138,9 @@ export default function Index() {
             </View>
 
             <ScrollView>
+
+                {books.length == 0 ? <Text style={{ fontSize: 30, marginHorizontal: 20 }}>Carregando...</Text> : <Text></Text>}
+
                 {books?.map((item) => (
                     <Book
                         key={item.id + item.title}
