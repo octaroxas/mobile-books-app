@@ -15,6 +15,10 @@ export default function BookList({ list }: BooksItemProps) {
         navigate('show-book');
     }
 
+    const allBooks = () => {
+        navigate('all-books');
+    }
+
     return (
         <View>
             <View style={{ marginHorizontal: 20, marginVertical: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row' }}>
@@ -23,7 +27,7 @@ export default function BookList({ list }: BooksItemProps) {
             <ScrollView style={styles.colectionsContainer} showsHorizontalScrollIndicator={false} horizontal={true}>
                 {list.map((item, index) => (
                     <TouchableOpacity onPress={showBook}>
-                        <View key={index} style={styles.colectionItem}>
+                        <View key={`${index}-${item.title}`} style={styles.colectionItem}>
                             <Image style={{ borderRadius: 10, height: '100%', width: '100%' }} source={{ uri: item.urlCover }} />
                         </View>
                         <Text numberOfLines={1} style={{ flex: 1, width: 150, fontWeight: '600', color: '#375A64' }}>{item.title}</Text>
@@ -33,7 +37,7 @@ export default function BookList({ list }: BooksItemProps) {
                 }
 
                 <View style={{ marginRight: 20 }}>
-                    <TouchableOpacity style={{
+                    <TouchableOpacity onPress={allBooks} style={{
                         borderStyle: 'dashed',
                         height: 200,
                         width: 150,
