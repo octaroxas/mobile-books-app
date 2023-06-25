@@ -8,6 +8,8 @@ import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Index from "../screens/Books/Index";
 import Create from "../screens/Books/Create";
+import ListCollections from "../screens/Collections/ListCollections";
+import ShowCollection from "../screens/Collections/ShowCollection";
 
 
 const { Screen, Navigator } = createNativeStackNavigator()
@@ -70,6 +72,28 @@ export default function AppStack() {
                 }}
                 name="create-book"
                 component={Create}
+            />
+
+            <Screen
+                options={{
+                    title: 'Coleções',
+                    headerTitleStyle: {
+                        fontWeight: 'normal',
+                    },
+                }}
+                name="collections"
+                component={ListCollections}
+            />
+
+            <Screen
+                options={{
+                    title: 'Informações da Coleção',
+                    headerTitleStyle: {
+                        fontWeight: 'normal',
+                    },
+                }}
+                name="show-collection"
+                component={ShowCollection}
             />
         </Navigator>
     )

@@ -3,9 +3,16 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'rea
 import { Ionicons } from '@expo/vector-icons'
 
 import { ColectionItemProps } from '../../@tipagens/interfaces'
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function CollectionList({ list }: ColectionItemProps) {
+
+    const { navigate } = useNavigation();
+
+    const allCollections = () => {
+        navigate('collections');
+    }
     return (
         <View>
             <View style={{ marginHorizontal: 20, marginVertical: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row' }}>
@@ -23,7 +30,7 @@ export default function CollectionList({ list }: ColectionItemProps) {
                 ))}
 
                 <View style={{ marginRight: 20 }}>
-                    <TouchableOpacity style={{
+                    <TouchableOpacity onPress={allCollections} style={{
                         borderStyle: 'dashed',
                         height: 200,
                         width: 150,

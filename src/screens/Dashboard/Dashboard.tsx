@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/native'
 import React, { useContext, useEffect, useState } from 'react'
-import { Text, TouchableOpacity, View, ScrollView, StyleSheet, RefreshControl, Modal, Alert, Pressable } from 'react-native'
+import { Text, TouchableOpacity, View, ScrollView, StyleSheet, RefreshControl } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import api from '../../api/api'
 import { Ionicons } from '@expo/vector-icons'
