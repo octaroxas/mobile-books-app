@@ -9,15 +9,6 @@ import Input from '../../components/Input';
 import GirlBooks from '../../components/animation-components/GirlBooks';
 
 
-// async function handleLogin(credentials: any) {
-//   try {
-//     const { data } = await axios.post('https://localhost/api/v1/login', credentials)
-//     console.log(data)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
-
 const Login = () => {
 
   const { handleLogin, setLoading } = useContext(AuthContext);
@@ -90,7 +81,5 @@ const Login = () => {
   )
 
 }
-
-
 
 export default Login;

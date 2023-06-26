@@ -1,8 +1,12 @@
-import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, TouchableOpacity, ScrollView, Image, StyleSheet } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Profile() {
-    const [tab, setTab] = useState('descricao');
+    const [tab, setTab] = useState('description');
+    const { navigate } = useNavigation();
+    const { handleLogout, setLoading } = useContext(AuthContext);
 
 
     interface IUser {
@@ -33,7 +37,6 @@ export default function Profile() {
         )
     }
 
-
     useEffect(() => {
 
     }, [])
@@ -57,6 +60,12 @@ export default function Profile() {
                 <Text>{user.email}</Text>
             </View>
 
+            <View style={styles.logoutContainer}>
+                <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+                    <Text style={styles.logoutText}>Sair</Text>
+                </TouchableOpacity>
+            </View>
+
             <View>
                 <ScrollView showsHorizontalScrollIndicator={false} horizontal style={{ display: 'flex', flexDirection: 'row', gap: 30 }}>
                     <TouchableOpacity
@@ -67,6 +76,29 @@ export default function Profile() {
                     </TouchableOpacity>
                 </ScrollView>
             </View>
-        </ScrollView >
+        </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    logoutText: {
+        color: 'white',
+        fontWeight: '800'
+    },
+    logoutContainer: {
+        paddingVertical: 10,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    logoutButton: {
+        backgroundColor: 'red',
+        borderRadius: 10,
+        padding: 10,
+        width: '20%',
+        fontWeight: '800',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+});
