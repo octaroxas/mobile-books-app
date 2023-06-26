@@ -10,6 +10,7 @@ import Index from "../screens/Books/Index";
 import Create from "../screens/Books/Create";
 import ListCollections from "../screens/Collections/ListCollections";
 import ShowCollection from "../screens/Collections/ShowCollection";
+import CreateCollection from "../screens/Collections/CreateCollection";
 
 
 const { Screen, Navigator } = createNativeStackNavigator()
@@ -94,6 +95,17 @@ export default function AppStack() {
                 }}
                 name="show-collection"
                 component={ShowCollection}
+            />
+
+            <Screen
+                options={{
+                    title: 'Criar Coleção',
+                    headerTitleStyle: {
+                        fontWeight: 'normal',
+                    },
+                }}
+                name="create-collection"
+                component={CreateCollection}
             />
         </Navigator>
     )

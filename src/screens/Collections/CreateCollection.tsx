@@ -1,15 +1,22 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
-import Button from '../../components/Button';
-import Input from '../../components/Input';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { Component, useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
+import Input from '../../components/Input';
 
-export default function Create() {
+export default function CreateCollection() {
 
-    const navigation = useNavigation();
+    const { navigate } = useNavigation();
+
+
+    const allCollections = () => {
+        navigate('collections')
+    }
+    const createCollection = () => {
+        allCollections()
+    }
 
     const [title, setTitle] = useState();
-    const [year, setYear] = useState();
+
     return (
         <View style={styles.container}>
             <Input
@@ -19,33 +26,12 @@ export default function Create() {
                 placeholder='Ex: O vendedor de sonhos'
             />
 
-            <Input
-                label="Ano"
-                value={year}
-                onChange={() => { }}
-                placeholder='Ex: 2009'
-            />
-
-            <Input
-                label="Descricao"
-                value={year}
-                onChange={() => { }}
-                placeholder='...'
-            />
-
-            <Input
-                label="Link da capa"
-                value={year}
-                onChange={() => { }}
-                placeholder='http://'
-            />
-
             <TouchableOpacity
                 style={styles.buttom}
-                onPress={() => { }}
+                onPress={createCollection}
             >
                 <Text style={styles.textButtom}>
-                    Cadastrar Livro
+                    Criar Coleção
                 </Text>
             </TouchableOpacity>
         </View>
@@ -56,7 +42,8 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         flex: 1,
-        padding: 20
+        padding: 20,
+        paddingTop: 50,
     },
     inputSearchContainer: {
         backgroundColor: '#F9F9F9',
@@ -95,6 +82,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#375A64',
         borderRadius: 10,
         padding: 20,
+        marginVertical: 10,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'

@@ -12,6 +12,10 @@ export default function ListCollections() {
         navigate("show-collection")
     }
 
+    const createCollection = () => {
+        navigate("create-collection")
+    }
+
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         setTimeout(() => {
@@ -82,11 +86,11 @@ export default function ListCollections() {
     return (
         <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />} style={styles.container} >
             <View style={styles.addBookButtomContainer}>
-                {/* <TouchableOpacity onPress={createBook} style={styles.addBookButtom}>
+                <TouchableOpacity onPress={createCollection} style={styles.addBookButtom}>
                     <Text>
-                        Adicionar Livro +
+                        Criar Coleção +
                     </Text>
-                </TouchableOpacity> */}
+                </TouchableOpacity>
             </View>
 
             <ScrollView >
