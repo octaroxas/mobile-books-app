@@ -36,7 +36,7 @@ export default function Index() {
             })
             .then((json) => {
                 setBooks(json)
-                console.log('ddddddd')
+                console.log('getBooks')
             })
             .catch(err => console.log(err))
 
@@ -141,7 +141,7 @@ export default function Index() {
 
             <ScrollView >
 
-                {books.length == 0 ? <Text style={{ fontSize: 30, marginHorizontal: 20 }}>Carregando...</Text> : <Text></Text>}
+                {books.length == 0 ? <Text style={{ fontSize: 20, marginHorizontal: 20 }}>Carregando Livros...</Text> : <Text></Text>}
 
                 {books?.map((item) => (
                     <Book

@@ -91,14 +91,14 @@ export default function ListCollections() {
 
             <ScrollView >
 
-                {collections.length == 0 ? <Text style={{ fontSize: 30, marginHorizontal: 20 }}>Carregando...</Text> : <Text></Text>}
+                {collections.length == 0 ? <Text style={{ fontSize: 20, marginHorizontal: 20 }}>Carregando Coleções...</Text> : <Text></Text>}
 
                 {collections?.map((item) => (
                     <Collection
                         key={item.id + item.title}
                         title={item.title}
                         urlCover={item.urlCover}
-                        number_books={item.year}
+                        numberBooks={item.numberBooks}
                     />
                 ))}
             </ScrollView>
