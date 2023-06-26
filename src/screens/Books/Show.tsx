@@ -21,7 +21,7 @@ export default function Show() {
         title: 'De gênio e louco, todo mundo tem um pouco',
         year: '2009',
         urlCover: 'https://m.media-amazon.com/images/I/51BMP3BV-4L._SY344_BO1,204,203,200_QL70_ML2_.jpg',
-        synopsis: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+        synopsis: 'Bartolomeu e Barnabé são personagens que já estavam nos dois primeiros livros da saga Vendedor de Sonhos. Neste livro, eles ganham o centro da narrativa e ficamos conhecendo quem são esses dois maltrapilhos que, um dia, se juntaram ao Vendedor de Sonhos para acompanhá-lo na sua luta para semear sonhos e fazer um mundo melhor. Bartolomeu e Barnabé são dessas pessoas que enfrentam a vida de maneira diferente: se metem em muitas enrascadas e fazem os outros pensarem em suas ações. Tão populares quanto os palhaços, eles também possuem um profundo lado trágico. A combinação desses dois lados é explosiva.'
     } as book);
 
     const [tab, setTab] = useState('sinopse');
