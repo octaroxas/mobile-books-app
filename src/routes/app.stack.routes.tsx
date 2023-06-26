@@ -11,6 +11,7 @@ import Create from "../screens/Books/Create";
 import ListCollections from "../screens/Collections/ListCollections";
 import ShowCollection from "../screens/Collections/ShowCollection";
 import CreateCollection from "../screens/Collections/CreateCollection";
+import Apresentation from "../screens/Apresentation";
 
 
 const { Screen, Navigator } = createNativeStackNavigator()
@@ -107,6 +108,8 @@ export default function AppStack() {
                 name="create-collection"
                 component={CreateCollection}
             />
+
+
         </Navigator>
     )
 }
