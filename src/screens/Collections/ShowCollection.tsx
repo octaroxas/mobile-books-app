@@ -37,7 +37,7 @@ export default function ShowCollection() {
     }
 
     function getBooks() {
-        fetch('https://apimocha.com/api-books-mobile/books')
+        fetch('https://apimocha.com/api-books-mobile/collections/cury')
             .then((res) => {
                 return res.json()
             })
